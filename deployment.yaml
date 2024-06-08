@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydemoapp
+  labels:
+    app: mydemoapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mydemoapp
+  
+  template:
+    metadata:
+      labels:
+        app: mydemoapp
+    spec:
+      containers:
+      - name: mydemoapp
+        image: acr2024demo.azurecr.io/nginx:v2
+        resources:
+          requests:
+            cpu: 500m
+            memory: 500Mi
+          limits:
+            cpu: 500m
+            memory: 800Mi
+        ports:
+        - containerPort: 80
+
+
+
+
+
+
+
